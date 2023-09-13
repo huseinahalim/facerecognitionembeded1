@@ -1,6 +1,13 @@
 import cv2
 import numpy as np
 import argparse
+import threading
+import time
+# Get the number of active threads
+num_threads = threading.active_count()
+
+# Print the result
+print(f"Number of active threads: {num_threads}")
 
 ap = argparse.ArgumentParser()
 
@@ -37,6 +44,7 @@ facerec.read("facemodel/trainer_3cls.yml")
 
 shift = 0
 while(True):
+    start_time = time.time()
     s=0
     ret,img=cam.read()
     gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
@@ -76,8 +84,10 @@ while(True):
             cv2.putText(img,"FACE", (fx, fy), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 50), 2)
 
         cv2.putText(img, str(display), (fx, fy+fh+30), cv2.FONT_HERSHEY_COMPLEX, 1, (60, 180, 180), 2)
-       
-    #cv2.imshow("Face recognition",img)
+            
+    end_time = time.time()
+    frame_time = end_time - start_time
+    print(f"Inference time for frame: {frame_time:.4f} seconds")
     #if(cv2.waitKey(1)==ord('q')):
     #    break
 cam.release()
