@@ -55,11 +55,11 @@ while(True):
         roi_gray = gray[fy:fy + fh, fx:fx + fw]
         roi_color = img[fy:fy + fh, fx:fx + fw]
 
-        smile = smileDetect.detectMultiScale(roi_gray,scaleFactor=1.7,minNeighbors=22,minSize=(25, 25),flags=cv2.CASCADE_SCALE_IMAGE)
+        #smile = smileDetect.detectMultiScale(roi_gray,scaleFactor=1.7,minNeighbors=22,minSize=(25, 25),flags=cv2.CASCADE_SCALE_IMAGE)
 
-        for (sx, sy, sw, sh) in smile:
-            cv2.rectangle(roi_color, (sx, sy), (sx + sw, sy + sh), (255, 255, 0), 1)
-            s = 1
+        #for (sx, sy, sw, sh) in smile:
+        #    cv2.rectangle(roi_color, (sx, sy), (sx + sw, sy + sh), (255, 255, 0), 1)
+        #    s = 1
 
 
         id,conf=facerec.predict(gray[fy:fy + fh, fx:fx + fw])
