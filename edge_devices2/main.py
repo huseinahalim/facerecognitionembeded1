@@ -88,7 +88,8 @@ while(True):
     end_time = time.time()
     frame_time = end_time - start_time
     print(f"Inference time for frame: {frame_time:.4f} seconds")
-    #if(cv2.waitKey(1)==ord('q')):
-    #    break
+    cv2.imshow("images",img)
+    if(cv2.waitKey(1)==ord('q')):
+        break
 cam.release()
-#cv2.destroyAllWindows()
+cv2.destroyAllWindows()
